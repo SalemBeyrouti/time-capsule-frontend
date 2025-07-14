@@ -1,42 +1,27 @@
 import React from "react";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../Shared/footer.css";
-import { FaInstagram, FaFacebook, FaLinkedin, FaGithub, FaHome, FaInfoCircle, FaEnvelope, FaUsers, FaShieldAlt, FaRegCopyright } from "react-icons/fa";
+import {  FaRegCopyright } from "react-icons/fa";
 
 const Footer = () => {
     const navigate = useNavigate();
     return(
         <footer className="footer">
-            <div className="footer-socials">
-                <a href="https://www.instagram.com" target="">
-                  <FaInstagram size={24} />
-                </a>
-                <a href="https://www.facebook.com" target="">
-                  <FaFacebook size={24} />
-                </a>
-                <a href="https://www.linkedin.com" target="">
-                  <FaLinkedin size={24} />
-                </a>
-                <a href="https://www.github.com" target="">
-                  <FaGithub size={24} />
-                </a>
-            </div>
-
             <div className="footer-nav">
                 <a href="">
-                    <FaHome className="footer-icon" /> Home
+                    Home
                 </a>
                 <a href="">
-                    <FaInfoCircle className="footer-icon" /> About
+                    About
                 </a>
                 <a href="">
-                    <FaEnvelope className="footer-icon" /> Contact Us
+                    Contact Us
                 </a>
                 <a href="">
-                    <FaUsers className="footer-icon" /> Our Team
+                    Our Team
                 </a>
                 <a href="">
-                    <FaShieldAlt className="footer-icon" /> Terms & Privacy
+                    Terms & Privacy
                 </a>
             </div>
 
