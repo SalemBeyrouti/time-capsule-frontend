@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    padding: 0 80px;
+    padding: 20px 80px;
     background-color: #FDF7F2;
     border-bottom: 1px solid #ddd;
 }
@@ -23,28 +23,30 @@
     gap: 1.2rem;
 }
 
-.nav-link {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.nav-link:hover {
-    background-color: #818181;
-}
-
-.logout-button {
-    background-color: #7C2E2E;
+.btn {
+    padding: 0.6rem 1.4rem;
     border: none;
     border-radius: 6px;
-    padding: 0.5rem 1rem;
     font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    color: white;
 }
 
-.logout-button:hover {
+.primary {
+    background-color: #7C2E2E;
+    color: white;
+    text-decoration: none;
+}
+
+.primary:hover {
     background-color: #4d161e;
+}
+
+.secondary {
+    color: black;
+    text-decoration: none;
+}
+
+.secondary:hover {
+    background-color: #6c4b51;
 }

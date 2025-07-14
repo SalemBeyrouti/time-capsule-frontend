@@ -1,11 +1,13 @@
 import React from "react";
-import Navbar from "../Components/Layout/Navbar";
-import Footer from "../Components/Layout/Footer";
-import "../styles/LandingPage.css"
+import Navbar from "../../Components/Layout/Navbar/Navbar";
+import Footer from "../../Components/Layout/Footer/Footer";
+import "./style.css"
 import { IoMdContacts, IoMdAdd  } from "react-icons/io";
 import { MdOutlineMessage, MdOutlineFileUpload, MdOutlineShare   } from "react-icons/md"
 import { FaStar } from "react-icons/fa";
 import { FiCalendar } from "react-icons/fi";
+import Button from "../../Components/Shared/Button";
+
 
 
 
@@ -13,6 +15,7 @@ const LandingPage =() => {
     return(
         <>
         <Navbar />
+
         
         <main className="landing-main">
             <section className="hero-section">
@@ -22,7 +25,7 @@ const LandingPage =() => {
                     <p>
                         Create meaningul time capsules, share your stories with loved ones, and  discover memories from around the world. Your digital legacy starts here.
                     </p>
-                    <button className="cta-button">Create Capsule</button>
+                    <Button text="Create Capsule" variant="primary" className="cta-button" />
                     <div className="capsule-review">
                         <span><IoMdContacts /> 1k+ Members</span>
                         <span> <MdOutlineMessage /> 500+ Capsules

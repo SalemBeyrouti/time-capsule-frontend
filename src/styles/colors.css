@@ -1,0 +1,15 @@
+.bg-light {
+    background-color:#FDF7F2 ;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.text-primary {
+    color: #7C2E2E;
+}
+
+.text-danger {
+  color: #dc2626;
+}
