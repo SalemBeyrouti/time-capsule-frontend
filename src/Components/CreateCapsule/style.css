@@ -1,0 +1,44 @@
+.capsule-page-content{
+background-color: #FDF7F2;
+padding: 40px 80px;
+min-height: 100vh;
+box-sizing: border-box;
+}
+
+.capsule-page-top{
+    margin-bottom: 2rem;
+}
+
+.capsule-page-title{
+    font-size: 2rem;
+    font-weight: 700;
+    margin:0;
+    text-align: left;
+    line-height: 1.3;
+    text-decoration: underline;
+}
+.capsule-page-subtitle{
+    font-size: 1rem;
+    color: #C7A64F;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.capsule-step-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 0 2rem; 
+  padding-left: 45rem;
+}
+
+.capsule-step-buttons .btn {
+  min-width: 120px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+

@@ -22,7 +22,7 @@ const StepIndicator = ({ currentStep }) => {
         },
         {
             id: 3,
-            label: "Scheduele",
+            label: "Schedule",
             description: "Set delivery date and privacy",
             icon: <FiCalendar />
         }
@@ -30,19 +30,36 @@ const StepIndicator = ({ currentStep }) => {
 
     return (
         <div className="step-indicator">
-            {steps.map((step) => (
-                <div key={step.id} className={`step-item ${step.id === currentStep 
-                ? "active" : step.id < currentStep ? "completed" : "" }`} >
-                 <div className="step-icon">
-                    {step.id < currentStep ? <FaCheckCircle /> : step.icon}
-                 </div>
-                 <div className="step-info">
-                        <span className="step-label">{step.label}</span>
-                        <span className="step-desc">{step.description}</span>
-                 </div>
-                </div>
-            ))}
+  {steps.map((step, index) => {
+    let itemClass = "step-item";
+
+    if (step.id === currentStep) {
+      itemClass += " active";
+    } else if (step.id < currentStep) {
+      itemClass += " completed";
+    }
+
+    return (
+      <div key={step.id} className="step-wrapper">
+        <div className={itemClass}>
+          <div className="step-circle">
+            {step.id < currentStep ? <FaCheckCircle /> : step.icon}
+          </div>
+          <div className="step-info">
+            <span className="step-label">{step.label}</span>
+            <br />
+            <span className="step-desc">{step.description}</span>
+          </div>
         </div>
+
+        {index < steps.length - 1 && (
+          <div className="step-line"></div>
+        )}
+      </div>
+    );
+  })}
+</div>
+        
     );
 };
 

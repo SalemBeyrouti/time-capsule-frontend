@@ -20,6 +20,7 @@ const App = () => {
 
           <Route path="/auth" element={<Auth />} />
           <Route path="/landingpage" element={<LandingPage />} />
+          <Route path="/createcapsule" element={<CreateCapsule />} />
         </Routes>
         </BrowserRouter>
 
