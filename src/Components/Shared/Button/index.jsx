@@ -3,11 +3,11 @@ import "./styles.css";
 
 
 
-const Button = ({ text, onClick, variant = "primary", type="button", className=""}) => {
+const Button = ({ text, onClick, variant = "primary", type="button",icon, className=""}) => {
 
     return (
-        <button className={`btn ${variant} ${className}`} onClick={onClick} type={type}>
-            {text}
+        <button className={`btn ${variant} ${className}`} onClick={onClick} type={type} > {icon && <span className="btn-icon">{icon}</span>}
+            {text} 
         </button>
     );
 };

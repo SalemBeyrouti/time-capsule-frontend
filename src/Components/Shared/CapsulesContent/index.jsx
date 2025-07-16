@@ -5,8 +5,8 @@ import CapsuleCard from '../CapsuleCard';
 const sampleCapsule = {
   title: "Time Capsule to Myself",
   message: "Hello, future me!",
-  emoji: ":))))",
-  backgroundColor: "#33527cff",
+  emoji: ":)",
+  backgroundColor: "",
   customBackground: null,
   tags: ["future", "note", "personal"],
   deliveryDate: "2025-12-25",

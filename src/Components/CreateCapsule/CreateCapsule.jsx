@@ -6,10 +6,20 @@ import StepTwoContent from "../Capsule/StepTwoContent";
 import StepThreeContent from "../Capsule/StepThreeContent";
 import Navbar from "../Layout/Navbar/Navbar";
 import Button from "../Shared/Button";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const CreateCapsule = () => {
     const [currentStep, setCurrentStep] = useState(1);
+
+    const navigate = useNavigate();
+
+    const handlePreview = () => {
+        navigate("/previewcapsule", { state: capsuleData });
+    };
+
 
     const [capsuleData, setCapsuleData] = useState({
         message: "",
@@ -36,6 +46,10 @@ const CreateCapsule = () => {
         3: <StepThreeContent capsuleData={capsuleData} setCapsuleData={setCapsuleData} />,
     };
 
+    const handleSubmit = () => {
+        console.log("Final capsuleData:", capsuleData);
+    }
+
     return ( 
         <>
         <Navbar />
@@ -57,7 +71,7 @@ const CreateCapsule = () => {
                     {currentStep > 1 && (<Button onClick={prevStep}text="Back" variant="secondary" className="cta-button" />
                 )}
                 {currentStep < 3 ? (<Button onClick={nextStep}text="Next" variant="primary" className="cta-button" />) 
-                                : (<Button onClick={nextStep}text="Preview & Schedule" variant="primary" className="cta-button" />
+                                : (<Button onClick={handlePreview}text="Preview & Schedule" variant="primary"  />
                                  
                                 )}
                 </div>

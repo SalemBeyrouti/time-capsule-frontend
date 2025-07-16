@@ -6,7 +6,8 @@ import LandingPage from "./Pages/LandingPage";
 import CreateCapsule from "./Components/CreateCapsule/CreateCapsule";
 import PublicWall from "./Pages/PublicWall";
 import Profile from "./Pages/Profile";
-
+import CapsuleContent from "./Components/Shared/CapsulesContent";
+import PreviewCapsule from "./Pages/PreviewCapsule";
 import Auth from "./Pages/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -25,6 +26,8 @@ const App = () => {
           <Route path="/createcapsule" element={<CreateCapsule />} />
           <Route path="/publicwall" element={<PublicWall />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/preview" element={<PreviewCapsule />} />
+          <Route path="/previewcapsule" element={<PreviewCapsule />} />
 
         </Routes>
         </BrowserRouter>

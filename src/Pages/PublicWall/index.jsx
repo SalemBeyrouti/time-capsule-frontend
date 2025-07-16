@@ -8,9 +8,11 @@ const PublicWall = () => {
 
   return (
     <>
+    <div className="public-wall">
     <Navbar />
     <div>Hello from publci wall</div>
     <CapsuleContent />
+    </div>
 
   
   

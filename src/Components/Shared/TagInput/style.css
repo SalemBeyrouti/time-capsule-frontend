@@ -1,0 +1,36 @@
+.tag-input-wrapper {
+  margin-top: 1rem;
+}
+
+.tag-input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tag-list {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  color: red;
+}
+
+.tag-chip {
+  background-color: #eee;
+  padding: 0.4rem 0.6rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.remove-tag {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #900;
+  font-size: 1rem;
+  line-height: 1;
+}

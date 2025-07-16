@@ -1,6 +1,11 @@
 import React from "react";
 import "./styles.css";
 import Button from "../Button";
+import { FiSend } from "react-icons/fi";
+import { FaRegSave } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+
 
 const CapsuleCard = ({ data, isPreview = false  }) => {
     const { message,
@@ -16,18 +21,28 @@ const CapsuleCard = ({ data, isPreview = false  }) => {
         privacy,
         surpriseMode,
         notifyEmail } = data;
+        
 
-    return ( 
+    const navigate = useNavigate();
+    
+        return ( 
     <>
+    
     <div className="capsule-card" style={backgroundColor ? {backgroundColor} : {}}>
 
         {isPreview && (
             <div className="capsule-preview-header">
                 <h2 className="preview-title">Preview Time Capsule</h2>
+                <div></div>
                 <div className="preview-actions">
-                    <Button text="Save Draft" variant="secondary" />
-                    <Button text="Schedule Capsule" variant="primary" />
+                    <Button icon={<FaRegSave />} text="Save Draft" variant="secondary" onClick={() => {
+                    localStorage.setItem("draftCapsule", JSON.stringify(data));
+                    console.log("Draft saved locally!");
+                    }} />
+                    <Button icon={<FiSend />} text="Schedule Capsule" variant="primary" />
+                    <Button text="X" variant="tertiary" onClick={() => navigate("/createcapsule")} />
                 </div>
+                
             </div>
         )}
 
@@ -45,26 +60,36 @@ const CapsuleCard = ({ data, isPreview = false  }) => {
                 <h4 className="message-label">Message</h4>
                 <p className="capsule-message">{message || "No message"}</p>
             </div>
-            {images && images.length > 0 && (
-                <div className = "capsule-images">
-                    <h4 className="images-content">Attached images</h4>
-                    <div className = "image-thumbnails">
-                        {images.map((img, index) => ( <img key={index} src={typeof img === "string" ? img : URL.createObjectURL(img)} alt={`capsule-img-${index}`} className="capsule-image-thumb"/>))}
-                    </div>
-                </div>
-            )}
-            {voiceRecording && (
-                <div className="capsule-voice-recording">
-                    <h4 className="capsule-voice">Voice Message</h4>
-                    <audio controls src={URL.createObjectURL(voiceRecording)} className="voice-thumb" />
+            {(images?.length > 0 || voiceRecording) && (
+                <div className="capsule-attachments">
+                    {images && images.length > 0 && (
+                        <div className = "capsule-images">
+                            <h4 className="images-content">Attached images</h4>
+                            <div className = "image-thumbnails">
+                                {images.map((img, index) => ( <img key={index} src={typeof img === "string" ? img : URL.createObjectURL(img)} alt={`capsule-img-${index}`} className="capsule-image-thumb"/>))}
+                            </div>
+                        </div>
+                    )}
+                    {voiceRecording && (
+                        <div className="capsule-voice-recording">
+                            <h4 className="capsule-voice">Voice Message</h4>
+                            <audio controls src={URL.createObjectURL(voiceRecording)} className="voice-thumb" />
+                        </div>
+                    )}
                 </div>
             )}
             <div className="capsule-info">
                 <h4 className="info-label">Delivery Information</h4>
-                <div className="info-item">Reveal Date: {deliveryDate} </div>
-                <div className="info-item">Privacy: {privacy}</div>
-                <div className="info-item">Email Notification: {notifyEmail ? "Enabled" : "Disabled"}</div>
-                <div className="info-item">Surprise Mode: {surpriseMode ? "On" : "Off"}</div>
+                <div className="info-grid">
+                    <span className="info-key">Reveal Date:  </span>
+                    <span className="info-value">{deliveryDate}</span>
+                    <span className="info-key">Privacy:  </span>
+                    <span className="info-value">{privacy}</span>
+                    <span className="info-key">Email Notification:  </span>
+                    <span className="info-value">{notifyEmail ? "Enabled" : "Disabled"}</span>
+                    <span className="info-key">Surprise Mode:  </span>
+                    <span className="info-value">{surpriseMode ? "On" : "Off"}</span>    
+                </div>
 
             </div>
 

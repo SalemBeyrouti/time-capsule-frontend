@@ -1,0 +1,29 @@
+.privacy-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.privacy-option {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.privacy-option:hover {
+  background-color: #f9f4eb;
+}
+
+.privacy-option.selected {
+  border: 1px solid #c6a951;
+  background-color: #fdf7f2;
+}
+
+.privacy-icon {
+  font-size: 1.5rem;
+  padding-top: 0.25rem;
+}

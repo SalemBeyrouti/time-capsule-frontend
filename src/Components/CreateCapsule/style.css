@@ -1,3 +1,14 @@
+.create-capsule-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 70vh;
+  margin-top: 2rem;
+}
+.capsule-step-content {
+  flex: 1;
+}
+
 .capsule-page-content{
 background-color: #FDF7F2;
 padding: 40px 80px;
@@ -29,16 +40,10 @@ box-sizing: border-box;
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
-  padding: 0 2rem; 
-  padding-left: 40rem;
+  padding: 2rem 0;
+  
 }
 
-.capsule-step-buttons .btn {
-  min-width: 120px;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-}
+
 
 

@@ -21,7 +21,7 @@
 }
 
 .secondary:hover {
-    background-color: #6c4b51;
+    background-color: #dcdcdc;
 }
 
 .btn.secondary.cta-button {
@@ -30,6 +30,7 @@
     color:#787676;
 }
 
-.btn primary {
-    background-color: red;
+.btn-icon {
+  gap: 0.2 rem;
+  margin-right: 0.5rem;
 }

@@ -1,0 +1,21 @@
+.step-three-container {
+  background: white;
+  border: 1px solid #aaa;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.step-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d1c10;
+}
+
+.step-subtitle {
+  font-size: 0.95rem;
+  color: #c7a64f;
+  margin-bottom: 1.5rem;
+}
