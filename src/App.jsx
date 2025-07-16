@@ -4,6 +4,8 @@ import "./styles/index.css";
 
 import LandingPage from "./Pages/LandingPage";
 import CreateCapsule from "./Components/CreateCapsule/CreateCapsule";
+import PublicWall from "./Pages/PublicWall";
+import Profile from "./Pages/Profile";
 
 import Auth from "./Pages/Auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +23,9 @@ const App = () => {
           <Route path="/auth" element={<Auth />} />
           <Route path="/landingpage" element={<LandingPage />} />
           <Route path="/createcapsule" element={<CreateCapsule />} />
+          <Route path="/publicwall" element={<PublicWall />} />
+          <Route path="/profile" element={<Profile />} />
+
         </Routes>
         </BrowserRouter>
 

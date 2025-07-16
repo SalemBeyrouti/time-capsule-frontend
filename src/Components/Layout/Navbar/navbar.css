@@ -23,6 +23,7 @@
     gap: 1.2rem;
 }
 
+
 .btn {
     padding: 0.6rem 1.4rem;
     border: none;
@@ -32,15 +33,6 @@
     cursor: pointer;
 }
 
-.primary {
-    background-color: #7C2E2E;
-    color: white;
-    text-decoration: none;
-}
-
-.primary:hover {
-    background-color: #4d161e;
-}
 
 .secondary {
     color: black;

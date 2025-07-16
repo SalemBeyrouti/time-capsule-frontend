@@ -7,11 +7,14 @@ import { MdOutlineMessage, MdOutlineFileUpload, MdOutlineShare   } from "react-i
 import { FaStar } from "react-icons/fa";
 import { FiCalendar } from "react-icons/fi";
 import Button from "../../Components/Shared/Button";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const LandingPage =() => {
+    
+    const navigate = useNavigate();
     return(
         <>
         <Navbar />
@@ -25,7 +28,7 @@ const LandingPage =() => {
                     <p>
                         Create meaningul time capsules, share your stories with loved ones, and  discover memories from around the world. Your digital legacy starts here.
                     </p>
-                    <Button text="Create Capsule" variant="primary" className="cta-button" />
+                    <Button onClick={() =>navigate("/createcapsule")} text="Create Capsule" variant="primary" className="cta-button" />
                     <div className="capsule-review">
                         <span><IoMdContacts /> 1k+ Members</span>
                         <span> <MdOutlineMessage /> 500+ Capsules

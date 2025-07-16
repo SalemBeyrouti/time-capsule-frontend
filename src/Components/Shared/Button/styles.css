@@ -23,3 +23,13 @@
 .secondary:hover {
     background-color: #6c4b51;
 }
+
+.btn.secondary.cta-button {
+
+    background-color: transparent ;
+    color:#787676;
+}
+
+.btn primary {
+    background-color: red;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Outlet } from 'react-router-dom';
 import "./navbar.css";
 import Button from "../../Shared/Button";
 
@@ -16,17 +16,16 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-right">
-                <Link to="/" className="btn secondary"> Home
+                <Link to="/landingpage" className="btn secondary"> Home
                 </Link>
-                <Link to="/wall" className="btn secondary">
+                <Link to="/publicwall" className="btn secondary">
                 Public Wall
                 </Link>
                 <Link to="/profile" className="btn secondary">
                 Profile
                 </Link>
-                <Link to="/auth" className="btn primary">
-                Logout
-                </Link>
+                <Button onClick={() => navigate ("/auth")}  text="Logout" />
+                
             </div>
             
         </nav>
