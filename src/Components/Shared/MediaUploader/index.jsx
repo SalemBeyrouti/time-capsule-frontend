@@ -12,7 +12,7 @@ const MediaUploader = ({ images =[], onImageUpload, onVoiceUpload, onLocationCap
         onVoiceUpload && onVoiceUpload(voiceFile);
     };
 
-    const handleLocationClick = () => {
+    const handleLocationClick = (e) => {
     if (onLocationCapture) onLocationCapture();
     };
 
@@ -22,7 +22,7 @@ const MediaUploader = ({ images =[], onImageUpload, onVoiceUpload, onLocationCap
         <div className="media-block">
           <span className="media-label">Images</span>
           <label className="upload-label">
-                Upload Images
+                Upload Image
                 <input
                     type="file"
                     accept="image/*"

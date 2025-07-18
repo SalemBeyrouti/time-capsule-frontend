@@ -1,0 +1,67 @@
+.filter-sidebar {
+  width: 220px;
+  background-color: #fffaf5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.filter-icon {
+  color: #a52a2a;
+}
+
+.filter-title {
+  font-size: 1rem;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.section-icon {
+  margin-right: 0.5rem;
+  color: #c7a64f;
+}
+
+.arrow {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.filter-content {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.filter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.apply-btn {
+  background-color: #7c2d2d;
+  color: white;
+}
+
+.clear-btn {
+  background-color: #efe0c8;
+  color: black;
+}

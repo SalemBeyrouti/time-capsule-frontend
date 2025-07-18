@@ -4,6 +4,7 @@ import "./styles.css";
 import { FaUpload, FaTrashAlt } from "react-icons/fa";
 
 const ProfileInfoForm = () => {
+ 
   const [profilePic, setProfilePic] = useState(null);
   const [name, setName] = useState("Salem Beyrouti");
   const [bio, setBio] = useState(
@@ -11,6 +12,14 @@ const ProfileInfoForm = () => {
   );
   const [timezone, setTimezone] = useState("Easter Time (ET)");
   const [autoDetect, setAutoDetect] = useState(true);
+
+  const handleSaveProfile = () => {
+    const updateProfile = {
+        profilePic, name, bio, timezone, autoDetect,
+    };
+    console.log("saving", updateProfile);
+
+  }
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -23,7 +32,7 @@ const ProfileInfoForm = () => {
         <div className="form-header">
             <h2>Profile Information</h2>
             <p>Manage your public profile details</p>
-            <Button text="Save All Changes" variant="primary" />
+            <Button text="Save All Changes" variant="primary" onClick={handleSaveProfile} />
         </div>
 
         
@@ -40,6 +49,8 @@ const ProfileInfoForm = () => {
                 <div className="image-placeholder" />
             )}
             <div className="pic-actions">
+                
+                
                 <label className="upload-btn">
                 <FaUpload /> Upload new
                 <input
@@ -49,7 +60,7 @@ const ProfileInfoForm = () => {
                     onChange={handleImageChange}
                 />
                 </label>
-                {profilePic && ( <Button variant="secondary" onClick={() => setProfilePic(null)} />
+                {profilePic && ( <Button text="remove" variant="remove" icon={<FaTrashAlt />} onClick={() => setProfilePic(null)} />
                 
                 )}
             </div>

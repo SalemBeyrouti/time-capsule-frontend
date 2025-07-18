@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CapsuleCard from "../../Components/Shared/CapsuleCard";
-import "./styles.css"; // optional custom styling
+import "./styles.css";
 
 const PreviewCapsule = () => {
-  const { state } = useLocation(); // from navigate()
+  const { state } = useLocation(); 
   const navigate = useNavigate();
 
   if (!state) {

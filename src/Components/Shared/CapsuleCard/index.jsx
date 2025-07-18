@@ -39,7 +39,7 @@ const CapsuleCard = ({ data, isPreview = false  }) => {
                     localStorage.setItem("draftCapsule", JSON.stringify(data));
                     console.log("Draft saved locally!");
                     }} />
-                    <Button icon={<FiSend />} text="Schedule Capsule" variant="primary" />
+                    <Button icon={<FiSend />} text="Schedule Capsule" variant="primary" onClick={()=>{console.log("Sent")}} />
                     <Button text="X" variant="tertiary" onClick={() => navigate("/createcapsule")} />
                 </div>
                 

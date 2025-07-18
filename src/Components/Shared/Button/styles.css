@@ -34,3 +34,10 @@
   gap: 0.2 rem;
   margin-right: 0.5rem;
 }
+
+.remove{
+    background-color: #FDF7F2 ;
+    font-size: 14px;
+    font-weight: 400;
+
+}

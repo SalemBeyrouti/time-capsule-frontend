@@ -1,0 +1,12 @@
+
+.sidebar-button{
+    display: flex;
+    text-align: center;
+    margin: 1px;
+    padding: 1rem;
+    background-color: #C7A64F;
+}
+
+.sidebar-button:hover{
+    color: #100c03;
+}

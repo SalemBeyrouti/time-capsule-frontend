@@ -58,9 +58,10 @@ const CreateCapsule = () => {
 
                 <h1 className="capsule-page-title">Create a time Capsule</h1>
                 <p className="capsule-page-subtitle">Create a meaningful message for the future with multimedia contentd and personalized settings</p>
+                <StepIndicator currentStep={currentStep} />
             </div>
 
-            <StepIndicator currentStep={currentStep} />
+            
 
             <div className="create-capsule-container">
                 <div className="capsule-step-content">
