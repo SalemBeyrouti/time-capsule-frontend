@@ -55,13 +55,19 @@ html, body {
 }
 
 .capsule-step-buttons {
+  display:flex ;
+  justify-content: center;
+  text-align: center;
+}
+
+/* .capsule-step-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
-  padding: 2rem 0;
-  
-}
+  padding: 0rem 0;
+   */
+/* } */
 
 
 

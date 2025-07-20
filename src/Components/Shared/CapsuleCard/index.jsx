@@ -7,33 +7,37 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const CapsuleCard = ({ data, isPreview = false  }) => {
-    const { message,
-        images,
-        voiceRecording,
-        location,
-        title,
-        emoji,
-        backgroundColor,
-        customBackground,
-        tags,
-        deliveryDate,
-        privacy,
-        surpriseMode,
-        notifyEmail } = data;
+const CapsuleCard = ({ data, media = [], isPreview = false  }) => {
+    
+    const capsule = data || {};
+    const customImage = media.find((m) => m.type === "image" && m.purpose === "background")?.url;
         
 
     const navigate = useNavigate();
-    
+
+    const getObjectUrl = (item) => {
+        if (!item) return "";
+        if (typeof item === "string") return item;
+        if (item instanceof File) return URL.createObjectURL(item);
+        if (item.url) return item.url;
+        if (item.data) return item.data;
+        if (item.file && item.file instanceof File) return URL.createObjectURL(item.file);
+        return "";
+    };
+
+    const backgroundImage = getObjectUrl(
+        media.find((m) => m.type === "image" && m.purpose === "background")
+    );
+
         return ( 
     <>
     
-    <div className="capsule-card" style={backgroundColor ? {backgroundColor} : {}}>
+    <div className="capsule-card" style = {{backgroundColor: capsule.backgroundColor || "#ffffff",
+    }}>
 
         {isPreview && (
             <div className="capsule-preview-header">
                 <h2 className="preview-title">Preview Time Capsule</h2>
-                <div></div>
                 <div className="preview-actions">
                     <Button icon={<FaRegSave />} text="Save Draft" variant="secondary" onClick={() => {
                     localStorage.setItem("draftCapsule", JSON.stringify(data));
@@ -46,34 +50,49 @@ const CapsuleCard = ({ data, isPreview = false  }) => {
             </div>
         )}
 
-        <div className={`capsule-header ${customBackground ? "with-img" : ""}`} style ={{ backgroundImage: customBackground ? `url(${URL.createObjectURL(customBackground)})` : "none"}} >
+        <div className="capsule-header"> 
+            <div style= {{backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
+                backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "150px", width:"100%"}} >
+
+            </div>
+
             <div className="header-content">
-                {emoji && <div className="capsule-emoji">{emoji}</div>}
-                {title && <h3 className="capsule-title">{title}</h3>}
+                {capsule.emoji && <div className="capsule-emoji">{capsule.emoji}</div>}
+                {capsule.title && <h3 className="capsule-title">{capsule.title}</h3>}
                 <div className="capsule-tags">
-                    <span className ={`privacy-tag ${privacy}`}>{privacy}</span>
-                    {tags && tags.map((tag, index) => (<span key={index} className="capsule-tag">#{tag}</span>))}
+                    <span className ={`privacy-tag ${capsule.privacy}`}>{capsule.privacy}</span>
+                    {capsule.tags && capsule.tags.map((tag, index) => (<span key={index} className="capsule-tag">#{tag}</span>))}
                 </div>
             </div>
         </div>
             <div className="capsule-message-section">
                 <h4 className="message-label">Message</h4>
-                <p className="capsule-message">{message || "No message"}</p>
+                {media.find((m) => m.type === "text" || m.type === "markdown") ? (
+                    media.filter((m) => m.type === "text" || m.type === "markdown").map((m, index) => (
+                        <p key={index} className="capsule-message">{m.content}</p>
+                    ))
+                ) : (
+                    <p className="capsule-message">{capsule.message || "no message"}</p>
+                )}
             </div>
-            {(images?.length > 0 || voiceRecording) && (
+            {media.length > 0  && (
                 <div className="capsule-attachments">
-                    {images && images.length > 0 && (
+                    {media.filter((item) => item.type === "image").length >0 && (
                         <div className = "capsule-images">
                             <h4 className="images-content">Attached images</h4>
                             <div className = "image-thumbnails">
-                                {images.map((img, index) => ( <img key={index} src={typeof img === "string" ? img : URL.createObjectURL(img)} alt={`capsule-img-${index}`} className="capsule-image-thumb"/>))}
+                                {media.filter((item) => item.type === "image").map((img, index) => (
+                                    <img key={index} src={getObjectUrl(img)} alt={`capsule-img-${index}`} className="capsule-image-thumb" />
+                                ))}
                             </div>
                         </div>
                     )}
-                    {voiceRecording && (
+                    {media.some((item) => item.type === "audio") && (
                         <div className="capsule-voice-recording">
                             <h4 className="capsule-voice">Voice Message</h4>
-                            <audio controls src={URL.createObjectURL(voiceRecording)} className="voice-thumb" />
+                            {media.filter((item) => item.type === "audio").map((audio, index) => (
+                                <audio key={index} controls src={getObjectUrl(audio)} className="voice-thumb"/>
+                            ))}
                         </div>
                     )}
                 </div>
@@ -82,13 +101,13 @@ const CapsuleCard = ({ data, isPreview = false  }) => {
                 <h4 className="info-label">Delivery Information</h4>
                 <div className="info-grid">
                     <span className="info-key">Reveal Date:  </span>
-                    <span className="info-value">{deliveryDate}</span>
+                    <span className="info-value">{capsule.deliveryDate || capsule.revealed_at}</span>
                     <span className="info-key">Privacy:  </span>
-                    <span className="info-value">{privacy}</span>
+                    <span className="info-value">{capsule.privacy}</span>
                     <span className="info-key">Email Notification:  </span>
-                    <span className="info-value">{notifyEmail ? "Enabled" : "Disabled"}</span>
+                    <span className="info-value">{capsule.notifyEmail ? "Enabled" : "Disabled"}</span>
                     <span className="info-key">Surprise Mode:  </span>
-                    <span className="info-value">{surpriseMode ? "On" : "Off"}</span>    
+                    <span className="info-value">{capsule.surpriseMode ? "On" : "Off"}</span>    
                 </div>
 
             </div>

@@ -52,6 +52,8 @@
     background-repeat: no-repeat;
     min-height: 200px;
     display: flex;
+    flex-direction: column;
+    width: 100%;
     align-items: center;
     justify-content: right;
 }
@@ -60,11 +62,13 @@
 .header-content {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   gap: 0.5rem;
   background-color: white; 
   padding: 1rem;
   border-radius: 8px;
+  margin-top: 2rem;
 }
 
 .capsule-emoji {
