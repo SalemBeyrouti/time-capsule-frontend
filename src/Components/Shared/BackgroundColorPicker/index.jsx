@@ -18,7 +18,7 @@ const BackgroundColorPicker = ({ backgroundColor, setBackgroundColor }) => {
         ))}
         <input
           type="color"
-          value={backgroundColor}
+          value={backgroundColor || "#000000"}
           onChange={(e) => setBackgroundColor(e.target.value)}
           className="color-picker-input"
         />

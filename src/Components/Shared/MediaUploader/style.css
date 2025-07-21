@@ -76,3 +76,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+.audio-preview audio {
+  display: block;
+  max-width: 200px;
+}

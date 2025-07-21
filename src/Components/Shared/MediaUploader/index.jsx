@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const MediaUploader = ({ images =[], onImageUpload, onVoiceUpload, onLocationCapture }) => {
+const MediaUploader = ({ images =[], voiceFile = null, location = null, onImageUpload, onVoiceUpload, onLocationCapture }) => {
     const handleImageChange = (e) => {
         const selectedFiles = Array.from(e.target.files);
         onImageUpload && onImageUpload(selectedFiles);
@@ -12,8 +12,8 @@ const MediaUploader = ({ images =[], onImageUpload, onVoiceUpload, onLocationCap
         onVoiceUpload && onVoiceUpload(voiceFile);
     };
 
-    const handleLocationClick = (e) => {
-    if (onLocationCapture) onLocationCapture();
+    const handleLocationClick = () => {
+     onLocationCapture && onLocationCapture();
     };
 
     return (
@@ -56,15 +56,25 @@ const MediaUploader = ({ images =[], onImageUpload, onVoiceUpload, onLocationCap
                 hidden
             />
             </label>
+            {voiceFile && (
+              <div className="audio-preview"> 
+              <audio controls> <source src={URL.createObjectURL(voiceFile)} type={voiceFile.type} /> Your browser does not support the audio element.</audio> </div>
+            )}
         </div>
       )}
 
       {onLocationCapture && (
         <div className="media-block">
-          <label className="media-label">Location</label>
+          <span className="media-label">Location</span>
           <button className="btn btn-upload" onClick={handleLocationClick}>
             Capture Current Location
           </button>
+          {location && (
+            <div className="location-preview">
+              <p>Latitude: {location.lat}</p>
+              <p>Longitude: {location.lng}</p>
+            </div>
+          )}
           
         </div>
       )}

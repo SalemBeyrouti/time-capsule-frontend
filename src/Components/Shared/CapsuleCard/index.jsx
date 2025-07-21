@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const CapsuleCard = ({ data, media = [], isPreview = false  }) => {
+const CapsuleCard = ({ data, media = [], isPreview = false, children  }) => {
     
     const capsule = data || {};
     const customImage = media.find((m) => m.type === "image" && m.purpose === "background")?.url;
@@ -33,18 +33,13 @@ const CapsuleCard = ({ data, media = [], isPreview = false  }) => {
     <>
     
     <div className="capsule-card" style = {{backgroundColor: capsule.backgroundColor || "#ffffff",
-    }}>
+    }} >
 
         {isPreview && (
             <div className="capsule-preview-header">
                 <h2 className="preview-title">Preview Time Capsule</h2>
                 <div className="preview-actions">
-                    <Button icon={<FaRegSave />} text="Save Draft" variant="secondary" onClick={() => {
-                    localStorage.setItem("draftCapsule", JSON.stringify(data));
-                    console.log("Draft saved locally!");
-                    }} />
-                    <Button icon={<FiSend />} text="Schedule Capsule" variant="primary" onClick={()=>{console.log("Sent")}} />
-                    <Button text="X" variant="tertiary" onClick={() => navigate("/createcapsule")} />
+                    {children}
                 </div>
                 
             </div>
@@ -52,7 +47,7 @@ const CapsuleCard = ({ data, media = [], isPreview = false  }) => {
 
         <div className="capsule-header"> 
             <div style= {{backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
-                backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "150px", width:"100%"}} >
+                backgroundSize: "contain", backgroundPosition: "center",  backgroundRepeat: "no-repeat", height: "150px", width:"100%"}} >
 
             </div>
 

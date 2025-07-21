@@ -11,11 +11,12 @@ const PreviewCapsule = () => {
   const navigate = useNavigate();
   const capsuleData = state?.capsuleData;
   const rawMedia = state?.media || [];
-  const capsuleId = state?.capsuleId;
+  
 
   const [media, setMedia] = useState([]);
+ 
 
-
+  const [capsuleId, setCapsuleId] = useState(state?.capsuleId);
 
 
 
@@ -48,8 +49,13 @@ const PreviewCapsule = () => {
  };
 
  const handleSubmit = async () => {
-  try {
-    const token = localStorage.getItem("token");
+  const token =localStorage.getItem("token");
+  console.log("token at start:", token);
+  
+
+  
+
+  try {;
     const response = await axios.post("/user/add_update_capsule", {
       title: capsuleData.title,
       emoji: capsuleData.emoji,
@@ -60,11 +66,31 @@ const PreviewCapsule = () => {
       tags: capsuleData.tags,
       visibility: capsuleData.privacy,
       is_surprise: capsuleData.surpriseMode,
+      location: capsuleData.location || null,
+      notifyEmail: capsuleData.notifyEmail || false,
+
     }, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    const capsuleId = response.data.payload.id;
+    const newCapsuleId = response.data.payload.id;
+    setCapsuleId(newCapsuleId);
+  
+    try {
+      const ipRes = await fetch("https://api.ipify.org?format=json");
+      const ipData = await ipRes.json();
+      const ipAddress = ipData.ip;
+
+      await axios.post("/user/locations", {
+        capsule_id: newCapsuleId,
+        ip_address: ipAddress,
+      }, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("📍 Location saved using IP:", ipAddress);
+      } catch(err) {
+         console.error("⚠️ Failed to save location:", err.response?.data || err.message);
+      }
     for (const media of rawMedia) {
       let base64 = null;
 
@@ -74,18 +100,19 @@ const PreviewCapsule = () => {
         base64 = media.data;
       }
 
-      await axios.post(`/user/capsules/${capsuleId}/media`, 
-        {
-          type: media.type,
-          data: base64 || media.content,
-        },
+      const mediaPayload = {
+        type: media.type,
+        data: base64 || media.content,
+      };
+
+      await axios.post(`/user/capsules/${newCapsuleId}/media`, mediaPayload,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
     }
     console.log("Capsule scheduled successfully");
-    navigate("/wall");
+    navigate("/landingpage");
   } catch (error) {
     console.error("Failed to schedule capsule:", error.response?.data || error.message);
   }
@@ -104,14 +131,20 @@ const PreviewCapsule = () => {
 
   return (
     <div className="preview-wrapper">
-      <CapsuleCard data={capsuleData} media={media} isPreview={true} />
+      
+      <CapsuleCard data={capsuleData} media={media} isPreview={true}>
       {!capsuleId && (
-        <div className="preview-actions">
-          <Button text ="Schedule  capsule" icon={<FiSend/>} variant="primary" onClick={handleSubmit} />
-        </div>
+        <>
+        <Button text = "Save Draft" variant= "secondary" icon={<i className="fas fa-save"></i>} onClick={() => console.log("Save Draft clicked")} />
+        <Button text="Schedule Capsule" icon={<FiSend />} variant="primary" onClick={handleSubmit}/>
+        <Button text="X" variant="tertiaryt" onClick={() => navigate("/landingpage")} />
+       
+        </>
       )}
+      </CapsuleCard>
     </div>
   );
 };
+
 
 export default PreviewCapsule;

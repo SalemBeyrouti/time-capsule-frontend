@@ -3,8 +3,10 @@
   background-color: #fffaf5;
   border: 1px solid #ccc;
   border-radius: 8px;
+  max-height: fit-content;
   padding: 1rem;
   font-family: sans-serif;
+  max-height: fit-content;
 }
 
 .filter-header {

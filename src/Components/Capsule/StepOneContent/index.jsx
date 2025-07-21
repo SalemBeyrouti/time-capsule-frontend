@@ -20,7 +20,9 @@ const StepOneContent = ({ capsuleData, setCapsuleData }) => {
         navigator.geolocation.getCurrentPosition((pos) => {
             const  { latitude, longitude} = pos.coords;
             setCapsuleData({...capsuleData, location: {lat: latitude, lng: longitude},
+                
             });
+            console.log("Location Captured:", capsuleData.location)
         });
     };
 
@@ -43,7 +45,9 @@ const StepOneContent = ({ capsuleData, setCapsuleData }) => {
                 onImageUpload={handleImageUpload}
                 onVoiceUpload={handleVoiceUpload}
                 onLocationCapture={handleLocationCapture}
-                images={capsuleData.images} />
+                images={capsuleData.images}
+                voiceFile={capsuleData.voiceRecording}
+                location={capsuleData.location} />
 
                 
                     
