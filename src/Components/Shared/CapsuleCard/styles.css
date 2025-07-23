@@ -16,47 +16,41 @@
 }
 
 .capsule-preview-header {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    
-    align-items: baseline;
-    padding: 1rem;
-    border-bottom: 1px solid black;
-    position: relative;
-    gap: 1rem;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+  position: relative;
+  gap: 1rem;
 }
 
 .preview-title{
   font-size: 1rem;
   justify-self: start;
   font-weight: 300;
-}
-.preview-actions{
-    align-items: center;
-    gap: 0.75rem;
-    display: flex;
-    
+
 }
 .btn.tertiary {
     
-    background-color: transparent;
-    cursor: pointer;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .capsule-header {
-    padding: 2rem 1rem;
-    text-align: center;
-    position: relative;
-    background-size: contain;
-    background-position: left;
-    background-repeat: no-repeat;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: right;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: right;
 }
 
 
@@ -211,5 +205,5 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-bottom: 1rem
+  
 }

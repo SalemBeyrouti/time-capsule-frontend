@@ -1,10 +1,11 @@
+import "./styles.css";
+import axios from "../../api/axios";
+import { FiSend } from "react-icons/fi";
 import React, { useEffect, useState } from "react";
+import Button from "../../Components/Shared/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import CapsuleCard from "../../Components/Shared/CapsuleCard";
-import axios from "../../api/axios";
-import "./styles.css";
-import Button from "../../Components/Shared/Button";
-import { FiSend } from "react-icons/fi";
+import ExportCapsuleButton from "../../Components/Shared/ExportCapsuleButton";
 
 const PreviewCapsule = () => {
   const { state } = useLocation(); 
@@ -54,9 +55,6 @@ const PreviewCapsule = () => {
   const token =localStorage.getItem("token");
   console.log("token at start:", token);
   
-
-  
-
   try {;
     const response = await axios.post("/user/add_update_capsule", {
       title: capsuleData.title,
@@ -146,12 +144,16 @@ const PreviewCapsule = () => {
     <div className="preview-wrapper">
       
       <CapsuleCard data={capsuleData} media={media} isPreview={true}>
-      {!capsuleId && (
+      {capsuleId ? ( 
+        <>
+        <ExportCapsuleButton capsuleId={capsuleId} />
+        <Button text="X" variant="tertiaryt" onClick={() => navigate("/publicwall")} />
+          </>
+      ) : (
         <>
         <Button text = "Save Draft" variant= "secondary" icon={<i className="fas fa-save"></i>} onClick={() => console.log("Save Draft clicked")} />
         <Button text="Schedule Capsule" icon={<FiSend />} variant="primary" onClick={handleSubmit}/>
         <Button text="X" variant="tertiaryt" onClick={() => navigate("/landingpage")} />
-       
         </>
       )}
       </CapsuleCard>

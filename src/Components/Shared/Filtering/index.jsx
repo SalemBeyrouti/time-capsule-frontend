@@ -94,7 +94,13 @@ const FilterSidebar = ({ filters, setFilters, onApply}) => {
         <span>Time Ranges</span>
         <span className="arrow">{openSection === "time" ? "▲" : "▼"}</span>
       </div>
-      {openSection === "time" && <div className="filter-content">[Date pickers or options]</div>}
+      {openSection === "time" && <div className="filter-content">
+        <label className="filter-label">
+          Start Date: <input type="date" value={filters.start_date} onChange={(e) => setFilters((prev) => ({ ...prev, start_date: e.target.value}))} className="filter-input" />
+          </label>
+          <label className="filter-label">End Date: <input type="date" value={filters.end_date} onChange={(e) => setFilters((prev) => ({ ...prev, end_date: e.target.value }))} className="filter-input"/> 
+          </label>
+        </div>}
 
       <div className="filter-section" onClick={() => toggleSection("types")}>
         <FaLayerGroup className="section-icon" />
@@ -114,6 +120,9 @@ const FilterSidebar = ({ filters, setFilters, onApply}) => {
           text="Clear All"
           variant="secondary"
           className="clear-btn"
+          onClick={() => {
+            setFilters({country: "", mood: "", start_date: "", end_date: "" }); onApply();
+          }}
         />
       </div>
     </div>

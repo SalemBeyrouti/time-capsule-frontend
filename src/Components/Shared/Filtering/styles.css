@@ -1,10 +1,10 @@
 .filter-sidebar {
-  width: 220px;
-  background-color: #fffaf5;
+  width: 290px;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 8px;
   max-height: fit-content;
-  padding: 1rem;
+  padding: 0.8rem;
   font-family: sans-serif;
   max-height: fit-content;
 }

@@ -3,6 +3,9 @@ import { useState } from "react";
 import "./styles.css";
 import Navbar from "../../Components/Layout/Navbar/Navbar";
 import SideBarItem from "../../Components/Shared/SideBarItem";
+import AccountSecurity from "../../Components/Shared/AccountSecurity";
+import PrivacySettings from "../../Components/Shared/PrivacySettings";
+import NotificationSettings from "../../Components/Shared/NotificationSettings";
 import profileSideBarItems from "../../Components/Shared/profileSideBarItems";
 import ProfileInfoForm from "../../Components/Shared/ProfileInfoForm";
 
@@ -26,9 +29,9 @@ const Profile = () => {
             <div className="profile-tab-content">
 
                 {selectedTab === "profile" && <ProfileInfoForm/>}
-                {selectedTab === "notifications" && <h2>Notifications Settings</h2>}
-                {selectedTab === "account" && <h2>Account Security</h2>}
-                {selectedTab === "privacy" && <h2>Privacy Settings</h2>}
+                {selectedTab === "notifications" && <NotificationSettings/>}
+                {selectedTab === "account" && <AccountSecurity />}
+                {selectedTab === "privacy" && <PrivacySettings />}
             </div>
         </div>
 
