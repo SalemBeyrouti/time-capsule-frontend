@@ -77,7 +77,7 @@ const CapsuleCard = ({ data, media = [], isPreview = false, children  }) => {
                 {capsule.title && <h3 className="capsule-title">{capsule.title}</h3>}
                 <div className="capsule-tags">
                     <span className ={`privacy-tag ${privacy}`}>{privacy}</span>
-                    {capsule.tags && capsule.tags.map((tag, index) => (<span key={index} className="capsule-tag">#{tag}</span>))}
+                    {capsule.tags && capsule.tags.map((tag, index) => (<span key={index} className="capsule-tag">#{tag.name}</span>))}
                 </div>
             </div>
         </div>

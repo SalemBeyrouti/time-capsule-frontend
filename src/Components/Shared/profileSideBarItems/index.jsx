@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUser, FaBell, FaLock, FaShieldAlt } from "react-icons/fa";
+import { FaUser, FaBell, FaLock, FaShieldAlt, FaRegEnvelope  } from "react-icons/fa";
 
 
 const profileSideBarItems = [
@@ -27,6 +27,12 @@ const profileSideBarItems = [
         description: "Control what others can see",
         icon: <FaShieldAlt  />,
     },
+
+    {
+        id: "mycapsules",
+        label: "My Capsules",
+        icon: <FaRegEnvelope />,
+    }
 
 ];
 

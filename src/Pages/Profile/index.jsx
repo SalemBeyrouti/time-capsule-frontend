@@ -8,6 +8,7 @@ import PrivacySettings from "../../Components/Shared/PrivacySettings";
 import NotificationSettings from "../../Components/Shared/NotificationSettings";
 import profileSideBarItems from "../../Components/Shared/profileSideBarItems";
 import ProfileInfoForm from "../../Components/Shared/ProfileInfoForm";
+import MyCapsules from "../../Components/Shared/MyCapsules";
 
 const Profile = () => {
     const [selectedTab, setSelectedTab] = useState("profile");
@@ -32,6 +33,7 @@ const Profile = () => {
                 {selectedTab === "notifications" && <NotificationSettings/>}
                 {selectedTab === "account" && <AccountSecurity />}
                 {selectedTab === "privacy" && <PrivacySettings />}
+                {selectedTab === "mycapsules" && <MyCapsules />}
             </div>
         </div>
 

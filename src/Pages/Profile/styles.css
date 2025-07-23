@@ -10,7 +10,7 @@
 
 .profile-sidebar {
   width: 280px;
-  max-height: 500px;
+  max-height: fit-content;
   background-color: white;
   border-radius: 8px;
   padding: 20px;
