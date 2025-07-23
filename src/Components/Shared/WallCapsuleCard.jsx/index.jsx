@@ -1,25 +1,40 @@
 import React from 'react';
 import './styles.css';
 
-const WallCapsuleCard = ({ capsule }) => {
+const WallCapsuleCard = ({ capsule, media = [] }) => {
     const {
         title,
         emoji,
         country,
         revealed_at,
         user,
-        cover_image_url,
         tags=[]
     } = capsule;
 
-    const imageUrl = capsule.cover_image_url?.startsWith("http")
-     ? capsule.cover_image_url
-     : "https://placehold.co/640x480?text=No+Image";
+    let imageUrl = capsule.cover_image_url;
+
+    if(!imageUrl && media.length >0) {
+        const imageMedia = media.find((item) => item.type === "image" && item.url);
+        imageUrl = imageMedia?.url || null;
+    }
+    if (!imageUrl && media.length > 0) {
+        const imageMedia = media.find((item) => item.type === "image" && item.url);
+        imageUrl = imageMedia?.url || null;
+    }
+    if (imageUrl && imageUrl.startsWith("/")) {
+        imageUrl = `http://localhost:8000${imageUrl}`;
+    }
+    if (!imageUrl) {
+        imageUrl = "https://placehold.co/640x480?text=No+Image";
+    }
+   
 
     return (
-        <div className="wall-capsule-card">
-            <div className="cover-image" style={{backgroundImage: `url(${cover_image_url || '/default.jpg'})`,
-            }}></div>
+        <>
+        <div className="wall-card">
+        <div className="cover-image">
+            <img src={imageUrl} alt="Capsule Cover" className="cover-img-el" />
+            </div>
 
             <div className="card-content">
                 <h4 className="title">{title}</h4>
@@ -36,7 +51,8 @@ const WallCapsuleCard = ({ capsule }) => {
                     <span key={idx} className="tag">#{tag}</span>))}
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 
 };

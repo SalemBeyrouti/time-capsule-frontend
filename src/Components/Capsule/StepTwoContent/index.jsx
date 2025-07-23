@@ -17,15 +17,18 @@ const StepTwoContent= ({ capsuleData, setCapsuleData }) => {
   };
 
   const handleSetBackgroundColor = (color) =>{
-    setCapsuleData((prev) => ({...prev, backgroundColor:color, customBackground: null
+    setCapsuleData((prev) => ({...prev, backgroundColor:color
 
     }));
   };
 
   const setCustomBackground = (file) => {
-    setCapsuleData((prev) => ({...prev, customBackground:file
-
-    }));
+    setCapsuleData((prev) => ({
+      ...prev, customBackground: 
+        file
+    
+  }));
+    
   };
 
   return (
@@ -40,7 +43,8 @@ const StepTwoContent= ({ capsuleData, setCapsuleData }) => {
 
         <BackgroundColorPicker backgroundColor={capsuleData.backgroundColor} setBackgroundColor={handleSetBackgroundColor} />
 
-        <BackgroundImageUpload customBackground={capsuleData.customBackground} setCustomBackground={setCustomBackground}/>
+        <BackgroundImageUpload customBackground={capsuleData.customBackground} setCustomBackground={setCustomBackground}/> 
+        
 
         <TagInput tags={capsuleData.tags} setTags={(tags) => setCapsuleData((prev) => ({ ...prev, tags }))} />
       

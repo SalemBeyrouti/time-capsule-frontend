@@ -28,16 +28,18 @@ const PreviewCapsule = () => {
         const response = await axios.get(`/user/capsule/${capsuleId}/media`,{
            headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(" Response:", response.data);
         setMedia(response.data.payload);
       } catch (error) {
         console.error("Failed to fetch media:", error.response?.data || error.message);
       }
     };
     fetchMedia();
+    
   } else {
     setMedia(rawMedia);
   }
- },[capsuleId, rawMedia]);
+ },[]);
 
  const fileToBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -87,11 +89,19 @@ const PreviewCapsule = () => {
       }, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("📍 Location saved using IP:", ipAddress);
+      console.log("Location saved using IP:", ipAddress);
       } catch(err) {
-         console.error("⚠️ Failed to save location:", err.response?.data || err.message);
+         console.error("Failed to save location:", err.response?.data || err.message);
       }
-    for (const media of rawMedia) {
+    const allMedia = [...rawMedia]
+    if (capsuleData.customBackground && capsuleData.customBackground.file instanceof File) {
+      allMedia.push({
+        file: capsuleData.customBackground,
+        type: "image",
+        purpose:"background",
+      });
+    }
+    for (const media of allMedia) {
       let base64 = null;
 
       if (media.file instanceof File) {
@@ -99,11 +109,14 @@ const PreviewCapsule = () => {
       } else if (media.data) {
         base64 = media.data;
       }
+     
 
       const mediaPayload = {
         type: media.type,
         data: base64 || media.content,
+        purpose: media.purpose || null,
       };
+      console.log(" Sending media:", mediaPayload)
 
       await axios.post(`/user/capsules/${newCapsuleId}/media`, mediaPayload,
         {

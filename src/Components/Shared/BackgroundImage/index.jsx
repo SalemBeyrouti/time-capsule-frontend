@@ -40,7 +40,7 @@ const BackgroundImageUpload = ({ customBackground, setCustomBackground }) => {
         style={{ display: "none" }}
       />
 
-      {customBackground && (
+      {customBackground instanceof File && (
         <div className="background-preview">
           <img
             src={URL.createObjectURL(customBackground)}

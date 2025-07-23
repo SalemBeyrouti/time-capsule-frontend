@@ -19,30 +19,49 @@
 .wall-content {
   display: flex;
   gap: 2rem;
+  padding: 20px 80px;
   margin-top: 1rem;
 }
 
 .filter-sidebar {
   width: 260px;
   flex-shrink: 0;
+  margin-left: 1rem;
+  padding: 1rem;
 }
 
 .capsule-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Always 3 per row on desktop */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 1.5rem;
 }
 
 .capsule-card-wrapper {
-  background-color: #8d2b2b;
+  background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   padding: 1rem;
-  height: 280px;
+  height: fit-content;
   cursor: pointer;
-  }
+  
+}
 
 .capsule-card-wrapper:hover {
   transform: scale(1.02);
+}
+
+.load-more-container {
+  border: 1px dashed rgb(153, 149, 149);
+  margin: 20px auto;
+  text-align: center;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 2rem;
 }
